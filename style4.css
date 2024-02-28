@@ -1,0 +1,219 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  @font-face {
+    font-family: monogram;
+    src: url(monogram.ttf);
+  }
+  
+  html {
+    height: 100%;
+    margin: 0;
+    background: url("images/sibackground-op.svg") no-repeat left top,
+      url("images/dots.svg") repeat,
+      radial-gradient(ellipse at bottom, #0055ff, transparent) black repeat;
+    background-size: 101%, auto; /* adjust as needed for your new SVG */
+    background-attachment: fixed, scroll, fixed;
+    background-position: bottom, 0 0, bottom;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    animation: scroll 30s linear infinite, zoom 20s ease-in-out infinite;
+  }
+  
+  @keyframes scroll {
+    0% {
+      background-position: bottom, 0 200mm, bottom;
+    }
+    100% {
+      background-position: bottom, 0 0, bottom;
+    }
+  }
+  
+  @keyframes zoom {
+    0%, 100% {
+      background-size: 101%, auto, auto;
+    }
+    50% {
+      background-size: 110%, auto, auto; /* adjust this value to control the zoom level */
+    }
+  }
+
+  /* near 1:1 aspect ratio view */
+  .main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 6vw;
+    width: 65vmax;
+    background-color: #00000000;
+    -webkit-mask-image: repeating-linear-gradient(#000000bb 2px, black 4px);
+    mask-image: repeating-linear-gradient(#000000bb 2px, black 4px);
+    -webkit-mask-repeat: repeat;
+    mask-repeat: repeat;
+  }
+  .square {
+    display: flex;
+    width: max;
+    height: 50vmax;
+    position: relative; /* This is necessary for the absolute positioning of the cannon to work */
+    background-color: #ffffff11;
+    -webkit-mask-image: repeating-linear-gradient(#000000bb 2px, black 4px);
+    mask-image: repeating-linear-gradient(#000000bb 2px, black 4px);
+    -webkit-mask-repeat: repeat;
+    mask-repeat: repeat;
+  }
+  
+  /* landscape view */
+  @media (min-aspect-ratio: 1.45) {
+    .main {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+    .info {
+      display: flex;
+      flex-direction: column;
+      justify-content:flex-start;
+      width: 16vw;
+      height: 96vh;
+    }
+    .square {
+      display: flex;
+      width: 96vmin;
+      height: 96vmin;
+    }
+  }
+  
+  /* portrait view */
+  @media (max-aspect-ratio: 0.98) {
+    .main {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .info {
+      display: flex;
+      height: 7vw;
+      width: 90vw;
+    }
+    .square {
+      display: flex;
+      width: 90vmin;
+      height: 90vmin;
+    }
+  }
+  
+  p {
+    font-size: 3.5vmin;
+    font-family: monogram, Courier, monospace;
+    color: white;
+    padding: 0.3vh;
+    text-align: center;
+    text-shadow: 0 0 12px #fff;
+  }
+  
+  img {
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
+    filter: drop-shadow(0 0 3px #fff);
+  }
+  
+  .cannon {
+    height: 25%;
+  }
+  
+  .lowAlien {
+    height: 25%;
+  }
+  
+  .lives {
+    height: 3vmin;
+  }
+  
+  .square .cannon {
+    position: absolute;
+    height: 3%;
+    transform: translateX(-50%);
+  }
+  
+  .square .cannonShot {
+    position: absolute;
+    height: 2%;
+    transform: translateX(-50%);
+  }
+  .square .alienShot {
+    position: absolute;
+    height: 2%;
+    transform: translateX(-50%);
+  }
+  .square .lowAlien {
+    position: absolute;
+    height: 3%;
+    transform: translateX(-50%);
+  }
+  
+  .modal-overlay {
+    position: fixed; /* Use fixed positioning to ensure the modal stays in view */
+    top: 50%; /* Position the modal vertically at the center of the viewport */
+    left: 50%; /* Position the modal horizontally at the center of the viewport */
+    transform: translate(
+      -50%,
+      -50%
+    ); /* Center the modal both vertically and horizontally */
+    z-index: 9999; /* Ensure the modal appears above other content */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 20px; /* Add padding to the modal */
+  }
+  
+  .game-over-message {
+    font-family: monogram, Courier, monospace;
+    font-size: 20vh;
+    color: white;
+    text-align: center;
+    padding: 2vh;
+    background-color: #33333300;
+    border-radius: 1vh;
+    -webkit-mask-image: repeating-linear-gradient(#000000bb 2px, black 4px);
+    mask-image: repeating-linear-gradient(#00000066 2px, black 4px);
+    -webkit-mask-repeat: repeat;
+    mask-repeat: repeat;
+    text-shadow: 0 0 12px #fff;
+    margin-bottom: 2vh;
+  }
+  
+  button {
+    display: flex;
+    justify-content: center;
+    margin: 50px auto;
+    padding: 5px;
+    font-family: monogram;
+    font-size: 50px;
+    width: 280px;
+    height: 60px;
+    cursor: pointer;
+    border-radius: 15px;
+    border-color: #fff;
+    color: #fff;
+    background-color: transparent;
+  }
+  
+  #restart-btn {
+    position: absolute;
+    top: calc(100% + 10px); /* Position the button below the message */
+    left: 50%; /* Align the button horizontally */
+    transform: translateX(-50%); /* Center the button horizontally */
+    max-width: 40%; /* Reduce the size of the image */
+    /* Add any other styling you need for the restart button */
+  }
+  

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Space Invaders</title>
+    <link id="my-css" rel="stylesheet" href="style.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicons/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicons/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicons/favicon-16x16.png"
+    />
+    <link rel="icon" href="favicons/favicon.ico" type="image/x-icon" />
+    <link rel="manifest" href="favicons/site.webmanifest" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="info">
+        <p>SCORE: <span id="scoreSpan"></span></p>
+        <br />
+        <p>HI-SCORE: <span id="hiScoreSpan"></span></p>
+        <br />
+        <p>TIME: <span id="timerSpan">00:00</span></p>
+        <br />
+        <p>LIVES: <span id="livesSpan">3</span></p>
+        <br />
+        <p>LEVEL: <span id="levelSpan">1</span></p>
+        <br />
+        <div class="controls" style="text-align: center">
+          <form id="pause-btn">
+            <img src="images/keyboard/pause_T.png" width="40%" alt="" />
+          </form>
+          <form id="play-btn" style="display: none">
+            <img src="images/keyboard/play_T.png" width="40%" alt="" />
+          </form>
+          <form id="restart-btn">
+            <img
+              src="images/keyboard/reset.png"
+              style="position: fixed; bottom: 0; left: 7vw"
+              ;
+              width="15%"
+              ;
+            />
+          </form>
+        </div>
+      </div>
+      <div class="square"></div>
+      <div class="info">
+        <!-- <p>LEFT: &lt;</p> -->
+        <p>
+          LEFT:
+          <br />
+          <img
+            src="images/keyboard/computer_key_Arrow_Left_T.png"
+            alt="⬅️"
+            style="height: 3.5vmin"
+            ;
+          />
+        </p>
+        <br />
+        <!-- <p>RIGHT: &gt;</p> -->
+        <p>
+          RIGHT:
+          <br />
+          <img
+            src="images/keyboard/computer_key_Arrow_Right_T.png"
+            alt="➡️"
+            style="width: 3.5vmin"
+            ;
+          />
+        </p>
+        <br />
+        <p>
+          FIRE:
+          <br />
+          <img
+            src="images/keyboard/computer_key_Space_bar_T.png"
+            alt="🔥"
+            style="height: 3.5vmin"
+            ;
+          />
+        </p>
+        <br />
+        <p>
+          <span id="pause-resume-text">PAUSE</span>:
+          <br />
+          <img
+            src="images/keyboard/computer_key_P_T.png"
+            alt="⏯️"
+            style="height: 3.5vmin"
+          />
+          <br />
+        </p>
+        <br />
+        <p>
+          RESTART:
+          <br />
+          <img
+            src="images/keyboard/computer_key_R_T.png"
+            alt="R"
+            style="height: 3.5vmin"
+          />
+        </p>
+        <br />
+        <p>
+          GRAFX:
+          <br />
+          <img
+            src="images/keyboard/computer_key_G_T.png"
+            alt="G"
+            style="height: 3.5vmin"
+          />
+        </p>
+      </div>
+    </div>
+    <script type="module" src="script.mjs" defer></script>
+  </body>
+</html>
